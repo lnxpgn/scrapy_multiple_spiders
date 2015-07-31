@@ -10,9 +10,11 @@ class CustomCrawlCommand(Command):
             raise UsageError("running 'scrapy crawl' with more than one spider is no longer supported")
         spname = args[0]
 
+        # added new code
         spider_settings_path = self.settings.getdict('SPIDER_SETTINGS', {}).get(spname, None)
         if spider_settings_path is not None:
             self.settings.setmodule(spider_settings_path, priority='cmdline')
+        # end
 
         crawler = self.crawler_process.create_crawler()
         spider = crawler.spiders.create(spname, **opts.spargs)
