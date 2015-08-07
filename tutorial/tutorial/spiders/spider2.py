@@ -16,6 +16,7 @@ class Spider2(CommonSpider):
         self.log('title: %s' % title, INFO)
 
     def parse(self, response):
-        self.parse_other_info(response)
-
         super(Spider2, self).parse(response)
+        
+        self.parse_other_info(response)
+        
